@@ -78,10 +78,6 @@ INF=int(1e9)
 # 노드의 개수, 간선의 개수를 입력ㅂ다기
 n,m=map(int,input().split())
 
-#시작 노드 번호를 입력받기
-
-n,m=map(int,input().split())
-
 # 시작 노드 번호를 입력 받기
 start=int(input())
 
