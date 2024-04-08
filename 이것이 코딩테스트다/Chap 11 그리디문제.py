@@ -115,35 +115,82 @@ import time
 # print(result)
 # print(f"{end - start:.5f} sec")
 
-# 06 무지개 먹방 라이브
+# # 06 무지개 먹방 라이브
 
-import heapq
+# import heapq
 
-def solution(food_times,k):
+# def solution(food_times,k):
     
-    answer=0
+#     answer=0
 
-    hq=[]
+#     hq=[]
 
-    for i in range(len(food_times)):
-        heapq.heappush(hq,(food_times[i],i+1))
+#     for i in range(len(food_times)):
+#         heapq.heappush(hq,(food_times[i],i+1))
 
-    length=len(hq) # 음식 갯수 (한 사이클)
-    pre=0 # 전 음식의 섭취 기간
+#     length=len(hq) # 음식 갯수 (한 사이클)
+#     pre=0 # 전 음식의 섭취 기간
 
-    while hq:
-        # 가장 적은 섭취시간과 전 음식시간의 섭취시간을 빼주고, 음식 개수를 곱함
-        diff=(hq[0][0]-pre)*length
+#     while hq:
+#         # 가장 적은 섭취시간과 전 음식시간의 섭취시간을 빼주고, 음식 개수를 곱함
+#         diff=(hq[0][0]-pre)*length
 
-        #한 사이클의 음식량을 빼줄 diff가 k보다 작거나 같으면 빼준다. 
+#         #한 사이클의 음식량을 빼줄 diff가 k보다 작거나 같으면 빼준다. 
 
-        if diff<=k:
-            k-=diff
-            #한사이클을 돌렸기 때문에 해당 음식은 다먹었으니 제외 시킨다. 
+#         if diff<=k:
+#             k-=diff
+#             #한사이클을 돌렸기 때문에 해당 음식은 다먹었으니 제외 시킨다. 
+#             length-=1
+#             pre_=heapq.heappop(hq)
 
-            
+#         else:
+#             idx=k%length
+#             hq.sort(key = lambda x: x[1])
+#             answer = hq[idx][1]
+#             break
+#     return answer
+
+
+# # 07번 럭키 스트레이트
+
+
+# n=input()
+
+# n_list=list(map(int,n))
+
+# length=len(n_list)
+
+# left_num=n_list[:length//2]
+
+# right_num=n_list[length//2:]
+
+# if sum(left_num)==sum(right_num):
+#     print("LUCKY")
+
+# else:
+#     print("READY")
+
+
+# # 08 문자열 재정렬
+
+# n=input()
+# n_list=list(n)
+# int_list=[]
+# char_list=[]
 
 
 
+# for value in n_list:
+#     if value.isdigit():
+#         int_list.append(int(value))
+#     else:
+#         char_list.append(value)
+    
+
+# char_list.sort()
+# int_sum=sum(int_list)
+# result1="".join(char_list)
 
 
+# result=result1+str(int_sum)
+# print(result)
