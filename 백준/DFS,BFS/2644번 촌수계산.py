@@ -15,18 +15,19 @@ visited=[False]*(num+1)
 
 count=0
 def dfs(v,count):
+    if v==b:
+        return count  
+
     count+=1
     visited[v]=True
 
-    if v==b:
-        return count
-
     for i in graph[v]: # a 시작해서 b를 만나면 끝난다
         if visited[i]==False:
-            dfs(i,count)
+            result = dfs(i, count)
+            if result != -1:  # 목적지를 찾은 경우
+                return result
 
     return -1
 
 result=dfs(a,count)
 print(result)
-print("count", count)
