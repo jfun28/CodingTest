@@ -24,6 +24,7 @@ def dfs(v,count):
     for i in graph[v]: # a 시작해서 b를 만나면 끝난다
         if visited[i]==False:
             result = dfs(i, count)
+         
             if result != -1:  # 목적지를 찾은 경우
                 return result
 
