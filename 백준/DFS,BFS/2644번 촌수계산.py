@@ -3,25 +3,30 @@ num=int(input())
 a,b=map(int,input().split())
 
 n=int(input())
-
-graph=[[0]*(n+1) for _ in range(n+1)]
+result = []
+graph=[[] for _ in range(num+1)]
 
 for _ in range(n):
-    x,y=map(int, input().split())
-    graph[a][b]=graph[b][a]=1
+  x, y = map(int, input().split())  
+  graph[x].append(y)
+  graph[y].append(x)
 
-visted=[False]*(n+1)
+visited=[False]*(num+1)
 
 count=0
-def dfs(graph,v,visited):
-    global count
+def dfs(v,count):
+    count+=1
+    visited[v]=True
 
-    visted=True
-    for i in range(n+1): # a 시작해서 b를 만나면 끝난다다
-        if visited[i]==False and graph[v][i]==1:
-            count+=1
-            dfs(graph,i, visited)
-    return count
+    if v==b:
+        return count
 
-count=dfs(graph,a,visted)
-print(count)
+    for i in graph[v]: # a 시작해서 b를 만나면 끝난다
+        if visited[i]==False:
+            dfs(i,count)
+
+    return -1
+
+result=dfs(a,count)
+print(result)
+print("count", count)
