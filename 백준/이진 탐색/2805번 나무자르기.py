@@ -1,7 +1,7 @@
 n,m=map(int,input().split())
 
 tree=list(map(int,input().split()))
-
+tree.sort()
 start=0
 end=max(tree)
 result=0
