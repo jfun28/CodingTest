@@ -1,21 +1,15 @@
 n=int(input())
 
-d=[]
-count=0
+dp=[x for x in range(n+1)]
+print(dp)
 
-if n*n==1:
-        print(1)
-        
+for i in range(1,n+1):
+    for j in range(1,i):
+        if j*j>i:
+            break
 
-while True:    
-    n_s=n//2
-    mul=n_s*n_s    
-    if sum(d)==n:
-        print(len(d))    
-    
-    else:          
-        print(len(d))
-        break
-      
+        if dp[i]>dp[i-j*j]+1:
+            dp[i]=dp[i-j*j]+1
 
-    
+print(dp)
+print(dp[n])
