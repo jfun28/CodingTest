@@ -10,7 +10,6 @@ m_list=list(map(int,input().split()))
 _dict={}
 for i in range(len(n_list)):
     _dict[n_list[i]]=0
-print("check")
 
 for j in range(m):
     if m_list[j] not in _dict:
