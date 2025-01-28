@@ -25,6 +25,3 @@ print(n-max(dp))
 
 
     
-
-
-    
