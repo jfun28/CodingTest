@@ -12,7 +12,7 @@ while sum(b)!=0:
             else: # 정수인 홀수를 가질때
                 b[i]-=1
                 count+=1
-    check=1 
+            check=1 
 
     if check==0:
         b = list(map(lambda x: x/2, b))
