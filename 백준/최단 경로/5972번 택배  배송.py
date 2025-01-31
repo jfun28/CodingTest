@@ -22,7 +22,6 @@ def dijsktra(start):
         dist,now=heapq.heappop(q)
         if distance[now]<dist: # 힙정렬 되어서 최소로 나오는 건데 그것보다 작은것이므로 한번 계산이 된 것이므로 패스
             continue
-        print("now",now)
         for i in graph[now]:
             cost=dist+i[1]
             if cost<distance[i[0]]:
