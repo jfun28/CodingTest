@@ -5,13 +5,14 @@ input=sys.stdin.readline
 m,n=map(int,input().split())
 INF=int(1e9)
 # 수정된 코드
-graph=[[] for i in range(n+2)]
-graph=[[(i+1,1)] if i<n+1 else [] for i in range(n+2)]
+graph = [[(i+1, 1)] if i < n+1 else [] for i in range(n+2)]
 distance=[INF]*(n+2)
+distance[0] = 0  
 
 for _ in range(m):
     a,b,c=map(int,input().split())
-    graph[a].append((b,c))
+    if 0 <= a <= n+1 and 0 <= b <= n+1:  # 유효한 노드 범위 체크 <- 이것을 꼭 해주어야 한다.
+        graph[a].append((b, c))
 
 
 
