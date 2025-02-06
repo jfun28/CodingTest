@@ -3,7 +3,8 @@ INF=50
 n=int(input())
 
 graph=[[INF]*(n+1) for _ in range(n+1)]
-
+for i in range(1, n+1):
+    graph[i][i] = 0
 while True:
     a,b=map(int,input().split())
     if a==-1 and b==-1:
