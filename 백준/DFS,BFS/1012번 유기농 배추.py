@@ -27,4 +27,3 @@ for _ in range(t):
         graph[a][b]=graph[b][a]=1
         
     visited=[[False]*m for _ in range(n)]
-123sdfsdf
