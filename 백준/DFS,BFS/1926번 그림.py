@@ -1,3 +1,5 @@
+import sys
+sys.setrecursionlimit(10**6)
 n,m=map(int,input().split())
 
 
@@ -8,26 +10,28 @@ for i in range(n):
 
 dx=[-1,1,0,0]
 dy=[0,0,-1,1]
-picture_size=[0]*500
+picture_size = []  # 동적 리스트로 변경
 
 
 def dfs(x,y,index):
+    graph[y][x] = 0  # 현재 칸 방문 처리
+    size = 1 
     for i in range(4):
         nx=x+dx[i]
         ny=y+dy[i]
         if (0<=nx<m) and (0<=ny<n) and graph[ny][nx]==1:
-            graph[ny][nx]=0
-            picture_size[index]+=1
-            dfs(nx,ny,index)
+            size += dfs(nx,ny,index)  # 반환된 크기를 더함
+    return size
 
 picture_num=0
 
 for i in range(m): # x축(열) 
     for j in range(n): # x축(행)
         if graph[j][i]==1: # 이차원 배열에서는 [행][열]
-            dfs(i,j,picture_num)
+            size = dfs(i,j,picture_num)
+            picture_size.append(size)
             picture_num+=1
 
 
 print(picture_num)
-print(max(picture_size))
+print(max(picture_size) if picture_size else 0)  # 그림이
