@@ -1,20 +1,21 @@
 import sys
-input=sys.stdin.readline
+sys.setrecursionlimit(10**6) # 이게 중요하다 
+input = sys.stdin.readline
 
 
 def dfs(x,y):
-    dx=[1,-1,0,0]
-    dy=[0,0,1,-1]
+    dx = [0, 0, -1, 1] 
+    dy = [1, -1, 0, 0]
     
     # 상하좌우 확인
     for i in range(4):
         nx=x+dx[i]
         ny=y+dy[i]
         
-        if (0<=nx<m) or (0<=ny<n):
-            if graph[ny][nx]==1:
-                graph[ny][nx]=-1
-                dfs(nx,ny)
+        if (0 <= nx < m) and (0 <= ny < n) and graph[ny][nx] == 1:
+
+            graph[ny][nx]=-1
+            dfs(nx,ny)
 
 
 t=int(input())
@@ -26,13 +27,15 @@ for _ in range(t):
     result=0
     for _ in range(v):
         a,b=map(int,input().split())
-        graph[a][b]=graph[b][a]=1
+        graph[b][a]=1
     
-    for i in range(n):
-        for j in range(m):
-            if graph[j][i]==1: # x축 y축 헷갈리지 말것
+    for i in range(m): # x축(열) 
+        for j in range(n): # x축(행)
+            if graph[j][i]==1: # 이차원 배열에서는 [행][열]
                 dfs(i,j)
                 result+=1
-                
-# 출력
-print(result)    
+    # 출력
+    print(result)  
+     
+
+

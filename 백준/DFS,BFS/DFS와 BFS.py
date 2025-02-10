@@ -3,7 +3,7 @@ from collections import deque
 
 n,m,v=map(int,input().split())
 
-graph=[[0]*(n+1) for _ in range(n+1)]
+graph=[[0]*(m+1) for _ in range(n+1)]
 
 for _ in range(m):
     a,b=map(int,input().split())

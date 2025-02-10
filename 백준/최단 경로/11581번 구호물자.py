@@ -23,7 +23,6 @@ for k in range(1, n+1):
         for b in range(1, n+1):
             if graph[a][b] > graph[a][k] + graph[k][b]:
                 graph[a][b] = graph[a][k] + graph[k][b]
-print(graph)
 
 
 # 사이클 체크
@@ -31,7 +30,7 @@ has_cycle = False
 for i in range(1, n+1):
     for j in range(1, n+1):
         if 0<graph[1][j]!= INF:
-            if i != j and graph[i][j] != INF and graph[j][i] != INF :
+            if  0<graph[i][j] <INF and 0<graph[j][i] <INF :
                 has_cycle = True
                 break
         if has_cycle:
