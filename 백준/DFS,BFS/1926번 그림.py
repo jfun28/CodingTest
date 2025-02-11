@@ -34,4 +34,4 @@ for i in range(m): # x축(열)
 
 
 print(picture_num)
-print(max(picture_size) if picture_size else 0)  # 그림이
+print(max(picture_size) if picture_size else 0) # 그림이 없는 경우 처리
