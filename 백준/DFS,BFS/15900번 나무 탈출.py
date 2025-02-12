@@ -12,11 +12,11 @@ for i in range(n-1):
 
 # 해당 노드까지의 깊이를 저장함
 arr=[0]*(n+1)
-print("graph",graph)
+
 
 def dfs(cur,prv,cnt):
     # 해당 노드의 깊이
-    arr[cnt]=cnt
+    arr[cur]=cnt
     for nxt in graph[cur]:
         if nxt==prv: # 만약 방문한 노드가 직전에 노드라면은 건너띈다.
             continue
