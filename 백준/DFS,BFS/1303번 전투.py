@@ -17,7 +17,6 @@ B_army_size=[]
 
 def dfs(x,y,cnt,discret):
     graph[y][x] = 0  # 현재 칸 방문 처리
-    size = 1
 
     for i in range(4):
         nx=x+dx[i]
