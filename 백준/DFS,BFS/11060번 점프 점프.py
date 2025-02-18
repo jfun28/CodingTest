@@ -1,21 +1,31 @@
 from collections import deque
+import sys
+input=sys.stdin.readline
+INF=sys.maxsize
+
+
+def bfs(num):
+    global ans
+    que=deque()
+    que.append(num)
+    dp[num]=0
+    while que:
+        now=que.popleft()
+        if now==n-1:
+            ans=min(ans,dp[n-1])
+        else:
+            for i in range(1,A[now]+1):
+                if now+i<n and dp[now+i] > dp[now]+1: # n을 초과하지 않고 
+                    dp[now+i]=dp[now]+1
+                    que.append(now+i)
+
+
 n=int(input())
 
-graph=list(map(int,input().split()))
+A=list(map(int,input().split()))
+dp=[INF]*(n)
+ans=INF
+bfs(0)
+print(dp)
 
-print(graph)
-visited=[False]*n
-
-def bfs(graph,start,visited):
-    queue=deque([start])
-    visited[start]=True
-
-    while queue:
-        v=queue.popleft()
-        for i in range(graph[v]):
-            if not visited[i]:
-                queue.append(graph[i])
-                visited[i]=True
-
-
-    bfs(graph,0,visited)
+print(ans if ans!=INF else -1)
