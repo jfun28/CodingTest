@@ -19,6 +19,7 @@ for x in range(n):
     for y in range(m):
         if graph[y][x]==1:
             queue.append([y,x])
+            print(queue)
 
 
 def bfs():
