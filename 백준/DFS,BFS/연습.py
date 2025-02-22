@@ -1,39 +1,24 @@
-import sys
-sys.setrecursionlimit(10**6)  # 재귀 제한 늘리기
+from collections import deque
+# BFS 매서드 정의 
+def bfs(graph, start, visited):
+    # 큐 구현을 위해 deque 라이브러리 사용
+    queue=deque([start])
 
-n = int(input())
-graph = [0] * (n+1)  # 리스트 안에 리스트가 필요없으므로 단순화
+    # 방문한 노드 처리
+    visited[start]=True
+    while queue:
+        # 큐에서 원소 하나하나 popleft로 꺼낸다.
+        v=queue.popleft()
+        print(v, end=" ")
+        # 해당 원소와 연결된, 아직 방문하지 않은 원소들을 큐에 삽입
+        for i in graph[v]:
+            if visited[i]==False:
+                queue.append(i)
+                visited[i]=True
 
-# 그래프 입력 받기
-for i in range(1, n+1):
-    graph[i] = int(input())
 
-visited = [False] * (n+1)
-finished = [False] * (n+1)  # 탐색이 완전히 종료된 노드 체크
-answer = []
+graph=[[],[2,3,8],[1,7],[1,4,5],[3,5],[3,4],[7],[2,6,8],[1,7]]
 
-def dfs(current):
-    if visited[current]:
-        if not finished[current]:  # 방문했지만 아직 탐색이 끝나지 않은 노드 = 순환 발견
-            temp = current
-            while True:
-                answer.append(temp)
-                temp = graph[temp]
-                if temp == current:
-                    break
-        return
-    
-    visited[current] = True
-    dfs(graph[current])
-    finished[current] = True  # 탐색 완료 표시
+visited=[False]*9
 
-# 모든 노드에 대해 순환 확인
-for i in range(1, n+1):
-    if not visited[i]:
-        dfs(i)
-
-# 정답 정렬 후 출력
-answer.sort()
-print(len(answer))
-for num in answer:
-    print(num)
+bfs(graph,1,visited)
