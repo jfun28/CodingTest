@@ -9,7 +9,7 @@ while queue:
     if money<5:
         if money%2: 
             print(-1)
-            exit(1)
+            exit()
 
     if not money%5:
         cnt_money=cnt_money+money//5
