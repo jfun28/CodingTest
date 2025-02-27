@@ -1,7 +1,8 @@
 # 다익스트라 알고리즘
 import heapq
 import sys
-INF=sys.maxsize
+INF=int(1e9)
+input=sys.stdin.readline
 
 n=int(input())
 
