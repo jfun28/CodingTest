@@ -35,9 +35,7 @@ for comb in list(combinations(chicken,m)):
     result=min(result,dist) # 현재 세개의 조합에서 가장 작으면 업데이트
 
 
-
-
-
+print(result)
 
 
 
