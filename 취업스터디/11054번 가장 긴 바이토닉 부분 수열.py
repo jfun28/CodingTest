@@ -19,7 +19,7 @@ for i in range(N-1, -1, -1):
 ans = 0
 for i in range(N):
     ans = max(ans, cache1[i]+cache2[i]-1)
-print(max(ans))
+print(ans)
 
 
 
