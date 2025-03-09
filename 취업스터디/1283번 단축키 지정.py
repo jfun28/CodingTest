@@ -19,7 +19,7 @@ for _ in range(n):
         # 반복문이 break를 통과하지 않을때
     else:
         # 3번의 방법을 수행
-        for j in range(len(word)):
+        for j in range(len(word)): # 단어 묶음으로 되어 있는 확인 반복문문
             flag=False # 현재 단어의 알파벳을 단축축키로 사용했는지 유무
             # 반복문을 통해 모든 단어의 알파벳을 확인
             for k in range(len(word[j])):
@@ -34,6 +34,9 @@ for _ in range(n):
 
                     break
 
+
+            if flag: # 이게 없으면은 "H[e]lp M[e] Pl[e]ase"일 때 3개 단축키가 형성된다. 
+                break
 
         else:
             print(*word) 
