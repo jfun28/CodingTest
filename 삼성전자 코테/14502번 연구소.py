@@ -53,7 +53,6 @@ for a,b,c in combinations(empty, 3):
 
     vgraph = bfs(vgraph,vrs)
     zero = 0
-    print(vgraph)
     for i in vgraph:
         for j in i:
             if j==0:
