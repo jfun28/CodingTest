@@ -2,19 +2,18 @@ from collections import deque
 n=int(input())
 m=int(input())
 
-sightseeing=list(map(int,input().split()))
 
 graph=[]
 visited=[0]*(n)
 
 for i in range(n):
     graph.append(list(map(int, input().split())))
+sightseeing=list(map(int,input().split()))
 
 
 def bfs(v):
     queue=deque([v])
-    # 현재 위치에서 4가지 방향 위치 확인
-    visited[v] = True
+    visited[v] = 1
     while queue: 
         v=queue.popleft()
         for i in range(n):
