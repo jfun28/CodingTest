@@ -10,8 +10,7 @@ def check(word):
             return True
         else:
             return False
-        
-  
+         
     if word[-1]=='A':
         if check(word[:-1]):
             return True
@@ -28,11 +27,6 @@ if answer:
     print(1)
 else:
     print(0)
-
-
-
-
-
 
 
 
