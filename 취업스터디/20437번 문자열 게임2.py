@@ -9,7 +9,7 @@ def find_answer(s_line):
     min_length = int(10**6)  # 문제 1: 최소 길이
     max_length = 0            # 문제 2: 최대 길이
 
-    for i in range(len(s_line)):        
+    for i in range(len(s_line)):  # 이것은 끝과 끝을 구하는 것  
         if s_line.count(s_line[i])>=k:
             alpha_dict[s_line[i]].append(i)
             

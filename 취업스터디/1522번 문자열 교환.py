@@ -10,8 +10,8 @@ def min_swaps_continuos(s):
         return 0
     
     # 원형 문자열을 처리하기 위해 문자열을 2배로 확장
-    s=s+s
-
+    s = s + s
+    
     min_swaps=float('inf')
 
     # 모든 가능한 시작 위치에 대해 검사
@@ -22,7 +22,7 @@ def min_swaps_continuos(s):
 
         min_swaps=min(min_swaps,swap_need)
 
-        return min_swaps
+    return min_swaps
 
 s=input()
 print(min_swaps_continuos(s))
