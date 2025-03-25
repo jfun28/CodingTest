@@ -42,4 +42,4 @@ bfs(graph,visited,start)
 for i in range(n):
     for j in range(m):
         print(visited[i][j],end=' ')
-    print(' ')
+    print('')
