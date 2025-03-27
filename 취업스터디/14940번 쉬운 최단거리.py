@@ -12,7 +12,7 @@ def bfs(graph,visited,start):
         for i in range(4):
             nh=h+dh[i]
             nw=w+dw[i]
-            if nh<0 or nh>=n or nw<0 or nw>=n or visited[nh][nw]==0:
+            if nh<0 or nh>=n or nw<0 or nw>=m or visited[nh][nw]==0:
                 continue
             if visited[nh][nw]==-1 and graph[nh][nw]==1:
                 visited[nh][nw]=visited[h][w]+1
