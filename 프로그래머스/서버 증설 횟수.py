@@ -19,7 +19,5 @@ m=int(input())
 k=int(input())
 
 
-
-
 print(solution(players, m, k))
 
