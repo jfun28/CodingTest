@@ -40,15 +40,15 @@ def find_seat(arr): # 앉을 자리 선택
             # 후보 목록에 (거리의 절반, 중간 좌석) 추가
             candidate.append((distance // 2, mid_seat))
 
-    # 조건에 맞는 자리 1자리만 리턴    
+    # 가장 넓은 공간을 가진 좌석, 같은 넓이라면 좌석 번호가 작은 좌석 리턴턴
     return sorted(candidate,key=lambda x:(-x[0],x[1]))[0][1] # 첫번쨰 기준: 거리가 큰 순서대로(-x[0]), 두 번째 기준: 좌석번호가 작은 순서대로(x[1])
 
-used=[]
+used=[] #과거의 사용자 이력
 
 for s,e in time:
     new_used=[] # 현재(시간: s) 사용중인 좌석
     for u in used: # 퇴실한 좌석 걸러내기 
-        if u[1]>s: # 해당 좌석의 종료 시간이 현재 시각보다 나중인가?",즉 아직 사용 중인 좌석이라면, 해당 좌석 정보를 new_used 리스트에 추가, 이미 퇴실했다면 new_used에 추가하지 않는다다
+        if u[1]>s: # 해당 좌석의 종료 시간이 현재 시각보다 나중인가?",즉 아직 사용 중인 좌석이라면, 해당 좌석 정보를 new_used 리스트에 추가, 이미 퇴실했다면 new_used에 추가하지 않는다
             new_used.append(u)
     res=find_seat(new_used)
     if res==p: # 민규가 좋아하는 자리에 누가 앉음
