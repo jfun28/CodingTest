@@ -1,10 +1,7 @@
 '''
 1. 분으로 바꾸어서 계산
 2. 전체 가용시간에서 할당된 시간을 뺴주는 방법으로 최종 답을 구한다
-
-
 '''
-
 
 n,t,p=map(int,input().split())
 
@@ -41,7 +38,9 @@ def find_seat(arr): # 앉을 자리 선택
             candidate.append((distance // 2, mid_seat))
 
     # 가장 넓은 공간을 가진 좌석, 같은 넓이라면 좌석 번호가 작은 좌석 리턴턴
-    return sorted(candidate,key=lambda x:(-x[0],x[1]))[0][1] # 첫번쨰 기준: 거리가 큰 순서대로(-x[0]), 두 번째 기준: 좌석번호가 작은 순서대로(x[1])
+    # 첫번쨰 기준: 거리가 큰 순서대로(-x[0]), 두 번째 기준: 좌석번호가 작은 순서대로(x[1])
+    return sorted(candidate,key=lambda x:(-x[0],x[1]))[0][1] 
+
 
 used=[] #과거의 사용자 이력
 

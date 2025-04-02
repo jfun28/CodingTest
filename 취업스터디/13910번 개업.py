@@ -22,7 +22,7 @@ else:
     for i in range(1,len(dp)):
         minval=float("inf")
         for x in wokCombi:
-            if (i-x>=0):
+            if (i-x>=0): # 계산과정에서 유효한 경우만 가져가겠다다
                 minval=min(minval,dp[i-x]+1)
         
         dp[i]=minval
@@ -30,4 +30,3 @@ else:
     print(-1 if dp[-1]==float('inf') else dp[-1])
 
 
-    
