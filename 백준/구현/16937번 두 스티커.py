@@ -15,36 +15,22 @@ for comb in combinations(stickers,2):
     r2,c2=sticker2
     
     # 아무것도 돌리지지 않았을 때
-    if (r1+r2<=h and max(c1,c2)<=w): 
-        max_n=max(max_n,r1*c1+r2*c2)
-
-    if (c1+c2<=h and max(r1,r2)<=w):
+    if (r1+r2<=h and max(c1,c2)<=w) or (max(r1,r2)<=h and c1+c2<=w ):
         max_n=max(max_n,r1*c1+r2*c2)
 
     # 두 번째 스티커만 돌릴 때
-    if (r1+c2<=h and max(c1,r2)<=w): 
+    if (r1+c2<=h and max(c1,r2)<=w) or (max(r1,c2)<=h and c1+r2<=w):
         max_n=max(max_n,r1*c1+r2*c2)
-
-    if (max(r1,c2)<=h and c1+r2<=w):
-        max_n=max(max_n,r1*c1+r2*c2)
-
 
     # 첫 번째 스티커만 돌릴 때
-    if (c1+r2<=h and max(r1,c2)<=w):
+    if (c1+r2<=h and max(r1,c2)<=w) or (max(c1,r2)<=h and r1+c2<=w):
         max_n=max(max_n,r1*c1+r2*c2)
-
-    if (max(c1,r2)<=h and r1+c2<=w):
-        max_n=max(max_n,r1*c1+r2*c2)
-
 
     # 둘다 회전
-    if (c1+c2<=h and max(r1,r2)<=w): 
-        max_n=max(max_n,r1*c1+r2*c2)
-    
-    if (max(c1,c2)<=h and r1+r2<=w):
+    if (c1+c2<=h and max(r1,r2)<=w) or (max(c1,c2)<=h and r1+r2<=w):
         max_n=max(max_n,r1*c1+r2*c2)
 
- 
+
 print(max_n)
 
 
