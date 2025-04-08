@@ -1,6 +1,6 @@
 from itertools import combinations,permutations
 
-def is_prime(n):
+def is_prime(n): # n의 2제곱근 까지 순차 탐색하면서 나눠지는게 있나 확인
     # 2 미만의 수는 소수가 아님
     if n < 2:
         return False
@@ -23,12 +23,12 @@ def solution(numbers):
     
     for i in range(1,len(num_list)+1):
         for comb in permutations(num_list,i):
+            print(comb)
             comb_int=int(''.join(map(str, comb)))
             if not comb_int in make_num:
                 make_num.append(comb_int)
                 if is_prime(comb_int):
                     answer+=1
-    print(answer)
     return answer
 
 
