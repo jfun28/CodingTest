@@ -30,11 +30,9 @@ def solve(n, count):
         new_num=0
         index_list=[i for i in range(1,len(n))]
         for index_comb in combinations(index_list,2):
-            print("index_comb",index_comb)
             first = n[:index_comb[0]]
             second = n[index_comb[0]:index_comb[1]]
             third = n[index_comb[1]:]
-            print("first, second, third",first,second,third)
             new_num = str(int(first) + int(second) + int(third)) # 새로운 숫자 만들기
             solve(new_num, count+check_odd(new_num)) # 새로운 숫자에 있는 홀수 개수 카운트를 누적해서 더함.
 
