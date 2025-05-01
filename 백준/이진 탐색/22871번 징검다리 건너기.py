@@ -18,11 +18,9 @@ def solution(start, end): # 이분 탐색의 시작점(최소 k값), 이분 탐�
 
         while stack:
             now = stack.pop()
-
             if now == N:
                 flag = True
                 break
-
             for idx in range(now+1, N+1): #현재 위치(now)에서 오른쪽에 있는 모든 돌들을 확인한다
                 temp = (idx - now) * (1 + abs(A[now] - A[idx])) # 현재 위치(now)에서 다음 위치(idx)로 점프하는 데 필요한 힘을 계산합니다.
                 if temp <= mid and not visited[idx]:  #계산된 힘(temp)이 현재 이분 탐색에서 설정한 최대 힘(mid)보다 작거나 같은지 확인
