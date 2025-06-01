@@ -19,8 +19,8 @@ print("c",c)
 for s in range(m):
     for e in range(s,m):
         t=T-sum(B[s:e+1]) # 타겟 값 T에서 B의 부배열합을 뺀 값이 
-        result+=c[t] # A의 부배열에 존재하면 result에 더해준다. 없으면 저절로 0이 나온다.
-        
+        result+=c[t] # A의 부배열에 존재하면 result에 더해준다. 없으면 저절로 0이 나온다.        
+    
     
 print(result)
 

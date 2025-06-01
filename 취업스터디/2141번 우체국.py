@@ -12,5 +12,11 @@ for _ in range(n):
 
 village.sort() # 위치가 항상 순서대로 입력된다는 보장은 없다
 
+count=0
+for pos, peo in village:
+    count+=peo
+    if count>=people/2:
+        print(pos)
+        break
 
-print(village)
+ 
