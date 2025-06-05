@@ -9,12 +9,10 @@ def dfs():
     
     for i in range(1,n+1):
         s.append(i)
-        print('s',s)
         dfs()
-        print("s.pop",s.pop())
+        s.pop()
 
 dfs()
-
 
 
 # from itertools import product # 중복 순열로 풀기
