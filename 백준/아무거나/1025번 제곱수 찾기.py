@@ -1,37 +1,52 @@
 import sys
 import math
 
-M, N = map(int, sys.stdin.readline().split())
+def is_perfect_square(n):
+    """완전제곱수인지 빠르게 판별"""
+    if n < 0:
+        return False
+    sqrt_n = int(math.sqrt(n))
+    return sqrt_n * sqrt_n == n
 
-numbers = []
-for _ in range(M):
-    numbers.append(list(map(int, list(sys.stdin.readline().replace('\n', '')))))
+def solve():
+    M, N = map(int, sys.stdin.readline().split())
+    
+    # 입력을 더 간단하게 처리
+    grid = []
+    for _ in range(M):
+        line = sys.stdin.readline().strip()
+        grid.append([int(ch) for ch in line])
+    
+    max_result = -1
+    
+    # 모든 시작점에 대해
+    for start_row in range(M):
+        for start_col in range(N):
+            # 모든 가능한 공차에 대해
+            for dr in range(-M, M):
+                for dc in range(-N, N):
+                    # 한 자리수도 고려해야 하므로 (0,0) 제외하지 않음
+                    
+                    r, c = start_row, start_col
+                    current_number = ""
+                    
+                    # 격자 범위 내에서 등차수열 생성
+                    while 0 <= r < M and 0 <= c < N:
+                        current_number += str(grid[r][c])
+                        
+                        # 현재까지 만든 수가 완전제곱수인지 확인
+                        num = int(current_number)
+                        if is_perfect_square(num):
+                            max_result = max(max_result, num)
+                        
+                        # 공차가 (0,0)이면 한 자리수만 확인하고 종료
+                        if dr == 0 and dc == 0:
+                            break
+                            
+                        # 다음 위치로 이동
+                        r += dr
+                        c += dc
+    
+    print(max_result)
 
-result = -1
-
-for m in range(M): # 어느 행에서 시작할 것인가?
-    for n in range(N): # 어느 열에서 시작할 것인가?
-        for weight_m in range(-M, M): # 행에서의 공차. -M부터 시작
-            for weight_n in range(-N, N): # 열에서의 공차. -N부터 시작
-                # 두 공차가 모두 0이면 무한 루프
-                if weight_m == 0 and weight_n == 0: continue
-                step = 0
-                x = m
-                y = n
-                value = ''
-                # 입력받은 수들의 범위 안에서 가능한 수열 추출
-                while (0 <= x < M) and (0 <= y < N):
-                    # 숫자 조합을 하고
-                    value += str(numbers[x][y])
-                    step += 1
-
-                    # 제곱수이고, 최댓값 갱신이 가능한지 확인
-                    value_int = int(''.join(value))
-                    value_sqrt = math.sqrt(value_int)
-                    value_decimal = value_sqrt - int(value_sqrt)
-                    if value_decimal == 0 and value_int > result: result = value_int
-
-                    x = m + step * weight_m
-                    y = n + step * weight_n
-
-print(result)
+solve()
