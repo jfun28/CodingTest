@@ -31,7 +31,7 @@ def dfs(visited,total):
         answer=min(answer,total)
 
     else:
-        for i in range(1,n-1):
+        for i in range(1,n-1): # 중앙점을 파악하는 코드 
             for j in range(1,n-1):
                 if check(i,j,visited) and (i,j) not in visited:
                     temp=[(i,j)]
