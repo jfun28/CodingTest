@@ -10,40 +10,42 @@
 '''
 
 import sys
+
 from itertools import combinations
+
 input=sys.stdin.readline
+
+n=int(input())
+graph=[]
+
+
+for _ in range(n):
+    graph.append(list(map(int,input().split())))
+
+candidates=[(r,c) for r in range(1,n-1) for c in range(1,n-1)]
+
 
 def check(li):
     global answer
-    visited=[] # 꽃잎이 서로 닿지 않는지 확인
-    total=0 # 꽃을 피울 때 해당 좌표의 대여비용을 힙할 변수
+    visited=[]
+    total=0
     for r,c in li:
-        visited.append((r,c)) # 꽃의 중앙 좌표를 먼저 담는다 
-        total+=fields[r][c] # 일단 중앙에 값을 넣어둔다
-        for idx in range(4): # 중앙을 기준으로 상하좌우를 확인한다
-            nr=r+d[idx][0]
-            nc=c+d[idx][1]
-            if (nr,nc) not in visited:
-                visited.append((nr,nc))
-                total+=fields[nr][nc]
-            else: # 꽃잎이 서로 닿게되는 경우는 함수를 종료한다.
+        visited.append((r,c))
+        total+=graph[r][c]
+        for i in range(4):
+            nr=r+d[i][0]
+            nc=c+d[i][1]
+            if (nr,nc) in visited:
                 return
-            
-    answer=min(answer, total) # 모든 꽃을 피울 수 있가면 최소 비용으로 최신화한다
+            visited.append((nr,nc))
+            total+=graph[nr][nc]
+    answer=min(answer,total)
     
-
-d=[(-1,0),(1,0),(0,1),(0,-1)]
-
-n=int(input())
-
 answer=int(1e9)
 
-fields=[list(map(int,input().split())) for _ in range(n)]
-candidates=[(r,c) for r in range(1,n-1) for c in range(1,n-1)]
+d=[(-1,0),(1,0),(0,-1),(0,1)]
 
 for li in combinations(candidates,3):
     check(li)
 
 print(answer)
-
-
