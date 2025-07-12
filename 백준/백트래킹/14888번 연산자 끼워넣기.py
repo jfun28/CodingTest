@@ -22,15 +22,15 @@ def search(depth, answer, plus, minus, multiply,divide):
         search(depth+1, answer+num_list[depth], plus-1, minus, multiply,divide)
 
 
-    elif minus:
+    if minus:
         search(depth+1, answer-num_list[depth], plus, minus-1, multiply,divide)
 
 
-    elif multiply:
+    if multiply:
         search(depth+1, answer*num_list[depth], plus, minus, multiply-1,divide)
 
 
-    elif divide:
+    if divide:
         search(depth+1, int(answer/num_list[depth]), plus, minus, multiply,divide-1)
 
 search(1, num_list[0], op[0], op[1], op[2],op[3])
