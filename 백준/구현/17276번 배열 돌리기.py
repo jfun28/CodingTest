@@ -21,8 +21,9 @@ for _ in range(T):
             print(*i)
     
     else:
-        mid=n//2
         for _ in range(d//45):
+            mid=n//2
+
             for i in range(n):
                 for j in range(n):
                     
@@ -34,9 +35,9 @@ for _ in range(T):
                     elif j==mid:
                         ans[i][j]=graph[i][i]
 
-                    # 부대각선->가운데 행
-                    elif i==mid:
-                        ans[i][j]=graph[i][n-i-1]
+                    # 부대각선->가운데 행 # graph[i][n-i-1] 이것은 안된다 왜냐 조건문에 i==mid로 fix 되어 있기 때문이다
+                    elif i==mid: 
+                        ans[i][j]=graph[n-j-1][j]
 
                     # 가운데 열-> 부대각선
                     elif i+j==n-1:
