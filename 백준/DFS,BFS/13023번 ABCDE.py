@@ -1,40 +1,44 @@
 import sys
+
 input=sys.stdin.readline
-sys.setrecursionlimit(100000)
 
 n,m=map(int,input().split())
 
-graph=[[] for _ in range(n)]
+graph=[[]*n for i in range(n)]
 
-arrive=False
+arrive = False
 
 for _ in range(m):
     a,b=map(int,input().split())
     graph[a].append(b)
     graph[b].append(a)
 
-def dfs_search(start, depth, visited):
+
+def dfs_search(start,depth):
     global arrive
     visited[start]=True
-
     if depth==5:
         arrive=True
         return arrive
-
+    
     for i in graph[start]:
-        if not visited[i]:
-            dfs_search(i,depth+1,visited)
-    visited[start]=False # 
+        if visited[i]==False:
+            dfs_search(i,depth+1)
+    visited[start]=False
+
+    return
 
 
 for i in range(n):
     visited=[False]*n
-    dfs_search(i,1,visited)
+    visited[i]=True
+    dfs_search(i,1)
     if arrive:
         break
 
+
 if arrive:
     print(1)
-
 else:
-    print(0)
+    print(0) 
+
