@@ -39,7 +39,7 @@ def dfs(depth,sum_num,plus,minus,multiplly,divide):
         dfs(depth+1,int(sum_num/num_list[depth]),plus,minus,multiplly,divide-1)
 
 
-dfs(0,0,oper[0],oper[1],oper[2],oper[3])
+dfs(1,num_list[0],oper[0],oper[1],oper[2],oper[3])
 
 print(max_num)
 print(min_num)
