@@ -7,12 +7,11 @@ import sys
 input=sys.stdin.readline
 from collections import deque
 graph=[]
-
+t = 1 
 R,C,N=map(int,input().split())
 
 for _ in range(R):
     graph.append(list(input().strip()))
-print(graph)
 
 
 def install_bomb(): # 폭탄 설치하기
@@ -41,25 +40,38 @@ def find_bomb(): # 폭탄 위치 찾기
 
 splash=[[1,0],[-1,0],[0,1],[0,-1]]
 
-if N%2!=0:
-    N-=1
-    while N>0: # 남은 시간 동안
-        temp=deque()
-        find_bomb()
-        install_bomb()
-        N-=1
-        if N==0: # 만약 시간이 N초면
-            break
+# if N%2!=0:
+#     N-=1
+#     while N>0: # 남은 시간 동안
+#         temp=deque()
+#         find_bomb()
+#         install_bomb()
+#         N-=1
+#         if N==0: # 만약 시간이 N초면
+#             break
         
-        pop_bomb()
-        N-=1 # 시간 1초 지나
+#         pop_bomb()
+#         N-=1 # 시간 1초 지나
 
-    for i in graph:
-        print(*i,sep='')
+#     for i in graph:
+#         print(*i,sep='')
 
-else:
-    graph=[['O']*C for _ in range(R)]
-    for i in graph:
-        print(*i,sep='')
+# else:
+#     graph=[['O']*C for _ in range(R)]
+#     for i in graph:
+#         print(*i,sep='')
+
+temp=deque()
+while t<N:
+    find_bomb()
+    install_bomb()
+    t+=1
+    if t==N:
+        break
+
+    pop_bomb()
+    t+=1
 
 
+for g in graph:
+    print(''.join(g))
