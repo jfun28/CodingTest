@@ -1,3 +1,6 @@
+'''
+백트랰킹으로 접근해볼 것 
+'''
 n,k=map(int,input().split())
 
 num_list=list(map(int,input().split()))
