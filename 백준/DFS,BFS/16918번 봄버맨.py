@@ -15,10 +15,9 @@ for _ in range(R):
 
 
 def install_bomb(): # 폭탄 설치하기
-    for i in range(R):
-        for j in range(C):
-            if graph[i][j]=='.':
-                 graph[i][j]='O'
+    # 2차원 리스트 전체를 순회하지 않고, 한 번에 '.'를 'O'로 바꿔줌
+    for i, row in enumerate(graph):
+        graph[i] = ['O' if cell == '.' else cell for cell in row]
 
 
 def pop_bomb(): # 폭탄 터트리기
