@@ -4,7 +4,7 @@ k=19
 graph=[]
 whites_blank=[]
 blacks_blank=[]
-
+s
 for _ in range(k):
     graph.append(list(map(int,input().split())))
 
