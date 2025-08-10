@@ -1,13 +1,13 @@
 import sys
 input=sys.stdin.readline
-
 k=int(input())
-visited=[False]*10
+n=9
+equa_list=list(input().split())
+visited=[False]*(n+1)
 ans=[]
-equa=list(input().split())
 
-def check(x,y,oper):
-    if oper=='<':
+def check(x,y,equ):
+    if equ=='<':
         if x>y:
             return False
     else:
@@ -15,24 +15,21 @@ def check(x,y,oper):
             return False
     return True
 
-def dfs_find(idx,num):
-
+def search(idx,num):
     if idx==k+1:
         ans.append(num)
         return
 
-    for i in range(10):
-        if not visited[i]:
-            if idx==0 or check(num[idx-1],str(i),equa[idx-1]):
+    for i in range(n+1):
+        if visited[i]==False:
+            if idx==0 or check(num[idx-1],str(i),equa_list[idx-1]):
                 visited[i]=True
-                dfs_find(idx+1,num+str(i))
+                search(idx+1,num+str(i))
                 visited[i]=False
 
-dfs_find(0,'')
+search(0,'')
 
 ans.sort()
 
-print(type(ans[-1]))
+print(ans[-1])
 print(ans[0])
-
-
