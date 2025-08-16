@@ -37,9 +37,6 @@ def bfs(numbers):
 
     return -1
 
-            
-
-
 
 for _ in range(T):
     graph=[]
