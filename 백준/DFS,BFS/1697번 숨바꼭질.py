@@ -2,26 +2,29 @@ import sys
 from collections import deque
 input=sys.stdin.readline
 
-def bfs():
-    queue=deque([subin])
-    while queue:
-        x=queue.popleft()
-        if x==sister:
-            print(dist[x])
-            break
-
-        for nx in (x-1,x+1,2*x):
-            if 0<=nx<=MAX and not dist[nx]:
-                dist[nx]=dist[x]+1
-                queue.append(nx)
-                
-
 MAX=10**5
 
-subin, sister=map(int,input().split())
+def bfs():
+    queue=deque([subin])
 
-dist=[0]*(MAX+1)
+    while queue:
+        vertex=queue.popleft()
+
+        if vertex==sister:
+            print(distance[vertex])
+            return
+        
+        for nx in ([vertex-1,vertex+1,2*vertex]):
+            if 0<=nx<=MAX and not distance[nx]:
+                distance[nx]=distance[vertex]+1
+                queue.append(nx)
+
+
+
+subin,sister=map(int,input().split())
+distance=[0]*(MAX+1)
 
 
 bfs()
+
 
