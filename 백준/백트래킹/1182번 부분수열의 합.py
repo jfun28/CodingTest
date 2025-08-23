@@ -1,21 +1,28 @@
+import sys
+input=sys.stdin.readline
+
 n,s=map(int,input().split())
 
-array=list(map(int,input().split()))
-cnt=0
-ans=[]
+num_array=list(map(int,input().split()))
 
-def search(start):
-    global cnt
-    if sum(ans)==s and len(ans)>0:
-        cnt+=1
+count=0
+
+answer=[]
+
+def dfs_search(start):
+    global answer,count
+
+    if sum(answer)==s and len(answer)>0:
+        count+=1
+        
 
     for i in range(start,n):
-        ans.append(array[i])
-        search(i+1)
-        ans.pop()
+        answer.append(num_array[i])
+        dfs_search(i+1)
+        answer.pop()
 
 
-search(0)
-print(cnt)
 
+dfs_search(0)
 
+print(count)
